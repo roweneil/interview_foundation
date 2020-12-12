@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\User;
 use Exception;
 use GrahamCampbell\GitHub\Facades\GitHub;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,17 @@ class GithubConnection
     public function setToken($token)
     {
         $this->token = $token;
+        return $this;
+    }
+
+    public function setTokenFromUser(User $user)
+    {
+        if($user && $user->actual_github_token) {
+            $this->token = $user->actual_github_token;
+        } else {
+            throw new Exception("Failed to decrypt token.");
+        }
+        return $this;
     }
 
     public function conn()
@@ -29,5 +41,10 @@ class GithubConnection
             'token' => $this->token,
             'method' => 'token',
         ]);
+    }
+
+    public function fetchStarredRepos()
+    {
+        return $this->conn()->me()->starring()->all();
     }
 }
