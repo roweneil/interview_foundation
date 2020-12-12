@@ -27,6 +27,7 @@ Vue.use(VueAxios, axios)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('home', require('./components/Home.vue').default);
 Vue.component('github-token-form', require('./components/GithubTokenForm.vue').default);
+Vue.component('github-starred', require('./components/GithubStarred.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

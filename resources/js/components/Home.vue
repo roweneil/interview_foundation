@@ -2,6 +2,7 @@
     <div>
         <template v-if="user">
             <github-token-form :user="user"></github-token-form>
+            <github-starred :user="user"></github-starred>
         </template>
         <template v-else>
             <p>Loading...</p>
