@@ -5,8 +5,13 @@
  */
 
 import BootstrapVue from 'bootstrap-vue'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 window.Vue = require('vue');
+
+Vue.use(BootstrapVue);
+Vue.use(VueAxios, axios)
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +25,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('home', require('./components/Home.vue').default);
+Vue.component('github-token-form', require('./components/GithubTokenForm.vue').default);
+Vue.component('github-starred', require('./components/GithubStarred.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

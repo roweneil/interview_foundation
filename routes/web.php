@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/user', 'UserController@show')->middleware('auth');
+Route::post('/update-github-token', 'UpdateGithubTokenController')->middleware('auth');
+Route::get('/starred-repos', 'GetStarredReposController')->middleware('auth');
